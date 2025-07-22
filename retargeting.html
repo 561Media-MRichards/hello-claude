@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Last Chance - The Capital Club Quartermaster</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #0f0f0f 0%, #191A1F 100%);
+            color: #ffffff;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Section */
+        .header {
+            text-align: center;
+            padding: 40px 0;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.6));
+        }
+        
+        .urgency-banner {
+            background: linear-gradient(45deg, #ff6b35, #f7931e);
+            color: white;
+            padding: 12px 20px;
+            font-weight: bold;
+            text-align: center;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+        
+        .hero-headline {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+            margin: 30px 0 20px;
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+        
+        .sub-headline {
+            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+            color: #cccccc;
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Value Proposition Section */
+        .value-section {
+            padding: 60px 0;
+            background: rgba(25, 26, 31, 0.8);
+        }
+        
+        .value-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .value-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .value-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(255, 215, 0, 0.4);
+        }
+        
+        .value-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+        
+        .value-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ffd700;
+            margin-bottom: 15px;
+        }
+        
+        .value-description {
+            color: #cccccc;
+            line-height: 1.6;
+        }
+        
+        /* Social Proof Section */
+        .social-proof {
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .testimonial {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            border-radius: 20px;
+            border-left: 4px solid #ffd700;
+        }
+        
+        .testimonial-text {
+            font-size: 1.3rem;
+            font-style: italic;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-author {
+            color: #ffd700;
+            font-weight: 600;
+        }
+        
+        /* Pricing Section */
+        .pricing {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+            text-align: center;
+        }
+        
+        .pricing-card {
+            max-width: 500px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 50px 40px;
+            border-radius: 20px;
+            border: 2px solid #ffd700;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #ff6b35, #ffd700, #ff6b35);
+        }
+        
+        .original-price {
+            font-size: 1.2rem;
+            color: #ff6b35;
+            text-decoration: line-through;
+            margin-bottom: 10px;
+        }
+        
+        .current-price {
+            font-size: 3rem;
+            font-weight: 900;
+            color: #ffd700;
+            margin-bottom: 20px;
+        }
+        
+        .savings {
+            background: linear-gradient(45deg, #ff6b35, #f7931e);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 30px;
+        }
+        
+        /* CTA Buttons */
+        .cta-section {
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+        
+        .btn {
+            padding: 18px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(45deg, #ff6b35, #ffd700);
+            color: #000;
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 107, 53, 0.5);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: #ffd700;
+            border: 2px solid #ffd700;
+        }
+        
+        .btn-secondary:hover {
+            background: #ffd700;
+            color: #000;
+        }
+        
+        .countdown {
+            background: rgba(255, 0, 0, 0.1);
+            border: 1px solid rgba(255, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        .countdown-timer {
+            font-size: 2rem;
+            font-weight: 900;
+            color: #ff6b35;
+            margin-top: 10px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-headline {
+                font-size: 2.5rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="urgency-banner">
+        ⚡ LIMITED TIME: Your Exclusive Invitation Expires Soon
+    </div>
+    
+    <div class="header">
+        <div class="container">
+            <h1 class="hero-headline">Still Thinking It Over?</h1>
+            <p class="sub-headline">
+                Your exclusive invitation to The Capital Club's wealth optimization collective is still available - but not for long.
+            </p>
+        </div>
+    </div>
+    
+    <div class="value-section">
+        <div class="container">
+            <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 20px; color: #ffd700;">
+                Here's What You're Missing Every Day You Wait:
+            </h2>
+            
+            <div class="value-grid">
+                <div class="value-card">
+                    <span class="value-icon">📈</span>
+                    <h3 class="value-title">Weekly Deal Flow</h3>
+                    <p class="value-description">
+                        Exclusive investment opportunities worth $50K+ that never reach the public market
+                    </p>
+                </div>
+                
+                <div class="value-card">
+                    <span class="value-icon">🎯</span>
+                    <h3 class="value-title">Tax Optimization</h3>
+                    <p class="value-description">
+                        Strategies that could save you $10K+ annually through sophisticated tax planning
+                    </p>
+                </div>
+                
+                <div class="value-card">
+                    <span class="value-icon">🤝</span>
+                    <h3 class="value-title">Elite Network</h3>
+                    <p class="value-description">
+                        Direct access to high-net-worth individuals and exclusive deal partnerships
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="social-proof">
+        <div class="container">
+            <div class="testimonial">
+                <p class="testimonial-text">
+                    "I was hesitant at first, but joining The Capital Club was the best financial decision I've made. The tax savings alone paid for my membership 10x over in the first year."
+                </p>
+                <p class="testimonial-author">- Michael R., Managing Partner</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="pricing">
+        <div class="container">
+            <h2 style="font-size: 2.5rem; margin-bottom: 30px; color: #ffd700;">
+                Your Last Chance at Founding Member Pricing
+            </h2>
+            
+            <div class="pricing-card">
+                <p class="original-price">Regular Price: $4,997</p>
+                <p class="current-price">$2,997</p>
+                <div class="savings">Save $2,000 Today Only</div>
+                
+                <div class="countdown">
+                    <p style="color: #ff6b35; font-weight: bold;">This offer expires in:</p>
+                    <div class="countdown-timer" id="countdown">23:47:32</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="cta-section">
+        <div class="container">
+            <h2 style="font-size: 2rem; margin-bottom: 20px; color: #ffffff;">
+                Don't Let Another Opportunity Pass You By
+            </h2>
+            <p style="font-size: 1.2rem; color: #cccccc; margin-bottom: 30px;">
+                Join the elite investors who stopped waiting and started winning.
+            </p>
+            
+            <div class="cta-buttons">
+                <a href="#" class="btn btn-primary">
+                    💎 Claim Your Spot Now - Save $2,000
+                </a>
+                <a href="#" class="btn btn-secondary">
+                    📞 Last Chance Call With Our Team
+                </a>
+            </div>
+            
+            <p style="margin-top: 30px; color: #888; font-size: 0.9rem;">
+                ⚠️ Warning: Once this offer expires, the next available membership will be at full price ($4,997)
+            </p>
+        </div>
+    </div>
+    
+    <script>
+        // Simple countdown timer
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const tomorrow = new Date();
+            tomorrow.setHours(23, 59, 59, 999);
+            const distance = tomorrow.getTime() - now;
+            
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            document.getElementById('countdown').innerHTML = 
+                String(hours).padStart(2, '0') + ':' + 
+                String(minutes).padStart(2, '0') + ':' + 
+                String(seconds).padStart(2, '0');
+        }
+        
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+</html>
